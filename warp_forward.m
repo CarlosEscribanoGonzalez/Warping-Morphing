@@ -6,9 +6,9 @@ function warp_forward()
     points = 3;
     
     % loads image 1
-    im1_original = imread('triangleA.jpg');
+    im1_original = imread('Images/triangleA.jpg');
     % loads image 2 
-    im2_original = imread('triangleB.jpg');
+    im2_original = imread('Images/triangleB.jpg');
     
     % rescales image 1 to 256x256
     im1(:,:,1) = imresize(im1_original(:,:,1), [256 256]); 
