@@ -5,14 +5,18 @@ Three MATLAB scripts written to understand the fundamentals of image warping. Ea
 
 * Maps every source pixel to its position in the destination image
 * Shows the main drawbacks of the method: holes (destination pixels that no source pixel lands on) and overlaps (several source pixels landing on the same destination pixel)
-<img width="256" height="256" alt="Forward" src="https://github.com/user-attachments/assets/ee23e24f-1277-4946-8412-2a6fbcb968fe" />
+<p align = "center">
+  <img width="256" height="256" alt="Forward" src="https://github.com/user-attachments/assets/ee23e24f-1277-4946-8412-2a6fbcb968fe" />
+</p>
 
 ## Backward warping
 
 * For every destination pixel, computes where it comes from in the source image and samples there
 * Solves the problems of forward warping: no holes and exactly one value per destination pixel
 * Interpolation can be used to get smoother results
-<img width="256" height="256" alt="Backward" src="https://github.com/user-attachments/assets/8a2b93f5-6598-49b6-a3c1-9854e4ca63eb" />
+<p align = "center">
+  <img width="256" height="256" alt="Backward" src="https://github.com/user-attachments/assets/8a2b93f5-6598-49b6-a3c1-9854e4ca63eb" />
+</p>
 
 ## Morphing
 
@@ -21,7 +25,9 @@ Three MATLAB scripts written to understand the fundamentals of image warping. Ea
 * Applies backward warping to both images towards that geometry
 * Cross-dissolves the two warped images to produce each frame
 * Generates output GIFs in the `output` folder
-<img width="256" height="256" alt="morphed_warp" src="https://github.com/user-attachments/assets/0d7d528d-601c-4d60-94b7-d5943b314fa9" />
+<p align = "center">
+  <img width="256" height="256" alt="morphed_warp" src="https://github.com/user-attachments/assets/0d7d528d-601c-4d60-94b7-d5943b314fa9" />
+</p>
 
 ## What can be observed
 
