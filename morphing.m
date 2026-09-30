@@ -1,4 +1,4 @@
-function incremental_warp_backward()
+function morphing()
     clc;clear;
     
     % points to click
