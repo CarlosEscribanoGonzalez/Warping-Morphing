@@ -9,21 +9,23 @@ function morphing()
     gif_path_t_to_s = 'output/target_to_source_warp.gif'; 
     gif_path_morphed = 'output/morphed_warp.gif'; 
     
-    % loads image 1
-    im1_original = imread('Images/triangleA.jpg');
+    res = [270 480];
     
-    % rescales image 1 to 256x256
-    im1(:,:,1) = imresize(im1_original(:,:,1), [256 256]); 
-    im1(:,:,2) = imresize(im1_original(:,:,2), [256 256]); 
-    im1(:,:,3) = imresize(im1_original(:,:,3), [256 256]); 
+    % loads image 1
+    im1_original = imread('Images/origin.jpg');
+    
+    % rescales image 1 to res
+    im1(:,:,1) = imresize(im1_original(:,:,1), res); 
+    im1(:,:,2) = imresize(im1_original(:,:,2), res); 
+    im1(:,:,3) = imresize(im1_original(:,:,3), res); 
     
     % loads image 2 
-    im2_original = imread('Images/triangleB.jpg');
+    im2_original = imread('Images/dest.jpg');
     
-    % rescales image 1 to 256x256
-    im2(:,:,1) = imresize(im2_original(:,:,1), [256 256]); 
-    im2(:,:,2) = imresize(im2_original(:,:,2), [256 256]); 
-    im2(:,:,3) = imresize(im2_original(:,:,3), [256 256]);
+    % rescales image 2 to res
+    im2(:,:,1) = imresize(im2_original(:,:,1), res); 
+    im2(:,:,2) = imresize(im2_original(:,:,2), res); 
+    im2(:,:,3) = imresize(im2_original(:,:,3), res);
     
     figure;
     imagesc(im1);
@@ -31,11 +33,10 @@ function morphing()
     hold on;
     [x1,y1] = ginput(points);
     
-    % Appends points (1,1), (1,256), (256,1), and (256,256) to the clicked
-    % points. This is needed for a Delauny triangulation that affects the
-    % entire image
-    x1 = vertcat(x1, 1, 1, 256, 256);
-    y1 = vertcat(y1, 1, 256, 1, 256);
+    % Appends corners to the clicked points. This is needed for a 
+    % Delauny triangulation that affects the entire image
+    x1 = vertcat(x1, 1, 1, res(2), res(2));
+    y1 = vertcat(y1, 1, res(1), 1, res(1));
     fprintf('x1: %.5f , y1: %.5f\n',x1(1), y1(1));
     fprintf('x1: %.5f , y1: %.5f\n',x1(2), y1(2));
     fprintf('x1: %.5f , y1: %.5f\n',x1(3), y1(3));
@@ -46,8 +47,8 @@ function morphing()
     axis equal;
     hold on;
     [x2,y2] = ginput(points);
-    x2 = vertcat(x2, 1, 1, 256, 256);
-    y2 = vertcat(y2, 1, 256, 1, 256);
+    x2 = vertcat(x2, 1, 1, res(2), res(2));
+    y2 = vertcat(y2, 1, res(1), 1, res(1));
     fprintf('x2: %.5f , y2: %.5f\n',x2(1), y2(1));
     fprintf('x2: %.5f , y2: %.5f\n',x2(2), y2(2));
     fprintf('x2: %.5f , y2: %.5f\n',x2(3), y2(3));
@@ -76,11 +77,11 @@ function morphing()
     hold off;
     
     % interpolation between im1 and im2 with 0.1 steps
-    for t=0:0.1:1
+    for t=0:0.05:1
         
         % allocates matrix to store warped images
-        warp_src_to_target = zeros(256, 256, 3, 'uint8');
-        warp_target_to_src = zeros(256, 256, 3, 'uint8');
+        warp_src_to_target = zeros(res(1), res(2), 3, 'uint8');
+        warp_target_to_src = zeros(res(1), res(2), 3, 'uint8');
       
         num_triangles = size(triangles, 1);
       
