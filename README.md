@@ -26,7 +26,8 @@ Three MATLAB scripts written to understand the fundamentals of image warping. Ea
 * Cross-dissolves the two warped images to produce each frame
 * Generates output GIFs in the `output` folder
 <p align = "center">
-  <img width="256" height="256" alt="morphed_warp" src="https://github.com/user-attachments/assets/0d7d528d-601c-4d60-94b7-d5943b314fa9" />
+  <img width="256" height="256" alt="triangle morphing" src="https://github.com/user-attachments/assets/0d7d528d-601c-4d60-94b7-d5943b314fa9" />
+  <img width="453" height="256" alt="mountain morphing" src="https://github.com/user-attachments/assets/05308094-2817-42c3-8566-5c5c1de576a9" />
 </p>
 
 ## What can be observed
